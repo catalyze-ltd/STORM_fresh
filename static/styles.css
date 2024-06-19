@@ -1,0 +1,9 @@
+html {
+    font-family: Helvetica, sans-serif
+}
+
+.leaflet-container {
+    width: 100wh; 
+    height: 85vh;
+    border: solid black 1px;
+  }
