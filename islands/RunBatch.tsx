@@ -1,8 +1,7 @@
-import OverviewSidebar from "./OverviewSidebar.tsx";
-// import OverviewMap from "./OverviewMap.tsx";
+import RunBatchSidebar from "./RunBatchSidebar.tsx";
+// import RunBatchMoe from "./RunBatchMoe.tsx";
 
-function Overview() {
-
+function RunBatch() {
     return(
         <div>
             <div>
@@ -10,12 +9,12 @@ function Overview() {
                     <div className="row">
                         <div className="col-3">
                             <div>
-                                <OverviewSidebar />
+                                <RunBatchSidebar />
                             </div>
                         </div>
                         <div className="col-9 bg-secondary">
                             <div>
-                                {/* <OverviewMap /> */}
+                                {/* <RunBatchMoe /> */}
                             </div>
                         </div>
                     </div>
@@ -25,4 +24,4 @@ function Overview() {
     );
 }
 
-export default Overview;
+export default RunBatch;

@@ -2,46 +2,42 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $_app from "./routes/_app.tsx";
-import * as $_middleware from "./routes/_middleware.ts";
-import * as $index from "./routes/index.tsx";
-import * as $login from "./routes/login.tsx";
-import * as $Deep_Dive from "./islands/Deep_Dive.tsx";
-import * as $Deep_Dive_Map from "./islands/Deep_Dive_Map.tsx";
-import * as $Deep_Dive_Sidebar from "./islands/Deep_Dive_Sidebar.tsx";
-import * as $Edit_Scenario from "./islands/Edit_Scenario.tsx";
-import * as $Edit_Scenario_Map from "./islands/Edit_Scenario_Map.tsx";
-import * as $Edit_Scenario_Sidebar from "./islands/Edit_Scenario_Sidebar.tsx";
-import * as $LoginEmailPassword from "./islands/LoginEmailPassword.tsx";
+import * as $_pages_layout from "./routes/(pages)/_layout.tsx";
+import * as $_pages_index from "./routes/(pages)/index.tsx";
+import * as $DeepDive from "./islands/DeepDive.tsx";
+import * as $DeepDiveMap from "./islands/DeepDiveMap.tsx";
+import * as $DeepDiveSidebar from "./islands/DeepDiveSidebar.tsx";
+import * as $EditScenario from "./islands/EditScenario.tsx";
+import * as $EditScenarioMap from "./islands/EditScenarioMap.tsx";
+import * as $EditScenarioSidebar from "./islands/EditScenarioSidebar.tsx";
+import * as $Navbar from "./islands/Navbar.tsx";
 import * as $Overview from "./islands/Overview.tsx";
 import * as $OverviewMap from "./islands/OverviewMap.tsx";
 import * as $OverviewSidebar from "./islands/OverviewSidebar.tsx";
-import * as $Run_Batch from "./islands/Run_Batch.tsx";
-import * as $Run_Batch_MOEs from "./islands/Run_Batch_MOEs.tsx";
-import * as $Run_Batch_Sidebar from "./islands/Run_Batch_Sidebar.tsx";
+import * as $RunBatch from "./islands/RunBatch.tsx";
+import * as $RunBatchMoe from "./islands/RunBatchMoe.tsx";
+import * as $RunBatchSidebar from "./islands/RunBatchSidebar.tsx";
 import { type Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/_app.tsx": $_app,
-    "./routes/_middleware.ts": $_middleware,
-    "./routes/index.tsx": $index,
-    "./routes/login.tsx": $login,
+    "./routes/(pages)/_layout.tsx": $_pages_layout,
+    "./routes/(pages)/index.tsx": $_pages_index,
   },
   islands: {
-    "./islands/Deep_Dive.tsx": $Deep_Dive,
-    "./islands/Deep_Dive_Map.tsx": $Deep_Dive_Map,
-    "./islands/Deep_Dive_Sidebar.tsx": $Deep_Dive_Sidebar,
-    "./islands/Edit_Scenario.tsx": $Edit_Scenario,
-    "./islands/Edit_Scenario_Map.tsx": $Edit_Scenario_Map,
-    "./islands/Edit_Scenario_Sidebar.tsx": $Edit_Scenario_Sidebar,
-    "./islands/LoginEmailPassword.tsx": $LoginEmailPassword,
+    "./islands/DeepDive.tsx": $DeepDive,
+    "./islands/DeepDiveMap.tsx": $DeepDiveMap,
+    "./islands/DeepDiveSidebar.tsx": $DeepDiveSidebar,
+    "./islands/EditScenario.tsx": $EditScenario,
+    "./islands/EditScenarioMap.tsx": $EditScenarioMap,
+    "./islands/EditScenarioSidebar.tsx": $EditScenarioSidebar,
+    "./islands/Navbar.tsx": $Navbar,
     "./islands/Overview.tsx": $Overview,
     "./islands/OverviewMap.tsx": $OverviewMap,
     "./islands/OverviewSidebar.tsx": $OverviewSidebar,
-    "./islands/Run_Batch.tsx": $Run_Batch,
-    "./islands/Run_Batch_MOEs.tsx": $Run_Batch_MOEs,
-    "./islands/Run_Batch_Sidebar.tsx": $Run_Batch_Sidebar,
+    "./islands/RunBatch.tsx": $RunBatch,
+    "./islands/RunBatchMoe.tsx": $RunBatchMoe,
+    "./islands/RunBatchSidebar.tsx": $RunBatchSidebar,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

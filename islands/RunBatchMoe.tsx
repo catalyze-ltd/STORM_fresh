@@ -1,4 +1,4 @@
-function OverviewMap() {
+function RunBatchMoe() {
     return(
         <div>
             <iframe src="https://www.catalyzeconsulting.com/" width="100%" height="800px"></iframe>
@@ -6,4 +6,4 @@ function OverviewMap() {
     );
 }
 
-export default OverviewMap;
+export default RunBatchMoe;

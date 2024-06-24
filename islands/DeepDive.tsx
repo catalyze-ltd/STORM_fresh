@@ -1,8 +1,7 @@
-import OverviewSidebar from "./OverviewSidebar.tsx";
-// import OverviewMap from "./OverviewMap.tsx";
+// import DeepDiveMap from "./DeepDiveMap.tsx";
+import DeepDiveSidebar from "./DeepDiveSidebar.tsx";
 
-function Overview() {
-
+function DeepDive() {
     return(
         <div>
             <div>
@@ -10,12 +9,12 @@ function Overview() {
                     <div className="row">
                         <div className="col-3">
                             <div>
-                                <OverviewSidebar />
+                                <DeepDiveSidebar />
                             </div>
                         </div>
                         <div className="col-9 bg-secondary">
                             <div>
-                                {/* <OverviewMap /> */}
+                                {/* <DeepDiveMap /> */}
                             </div>
                         </div>
                     </div>
@@ -25,4 +24,4 @@ function Overview() {
     );
 }
 
-export default Overview;
+export default DeepDive;

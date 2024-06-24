@@ -1,7 +1,7 @@
-import OverviewSidebar from "./OverviewSidebar.tsx";
-// import OverviewMap from "./OverviewMap.tsx";
+import EditScenarioSidebar from "./EditScenarioSidebar.tsx";
+// import EditScenarioMap from "./EditScenarioMap.tsx";
 
-function Overview() {
+function EditScenario() {
 
     return(
         <div>
@@ -10,12 +10,12 @@ function Overview() {
                     <div className="row">
                         <div className="col-3">
                             <div>
-                                <OverviewSidebar />
+                                <EditScenarioSidebar />
                             </div>
                         </div>
                         <div className="col-9 bg-secondary">
                             <div>
-                                {/* <OverviewMap /> */}
+                                {/* <EditScenarioMap /> */}
                             </div>
                         </div>
                     </div>
@@ -25,4 +25,4 @@ function Overview() {
     );
 }
 
-export default Overview;
+export default EditScenario;

@@ -1,215 +1,113 @@
-import { useState } from "preact/hooks";
-import axios from "https://esm.sh/axios@1.7.2";
-import React from "https://esm.sh/react@18.3.1";
+import * as scenarioListData from "../database/JSON_Data/Scenarios list.json" with { type: "json" };
+import * as scenarioEntitiesData from "../database/JSON_Data/Scenario entities.json" with { type: "json" };
+import * as platformListData from "../database/JSON_Data/Platform list.json" with { type: "json" };
 
 function OverviewSidebar() {
 
+    let platformTable = [];
+    let orbatTable : string[][] = [];
+    const scenario : string[] = [];
+    const platform : string[] = [];
+
     //////////////////////////////////////////////////////////////////////////
-    //                         Adding the hooks                             //
-    //////////////////////////////////////////////////////////////////////////
-    
-        const [scenario, setScenario] = useState<string[]>([]);
-        const [scenarioSelected, setScenarioSelected] = useState<string>("");
-        const [platform, setPlatform] = useState<string[]>([]);
-        const [platformSelected, setPlatformSelected] = useState<string>("");
-        const [orbatTable, setOrbatTable] = useState<string[]>([]);
-        const [platformTable, setPlatformTable] = useState<string[]>([]);
-    
-    //////////////////////////////////////////////////////////////////////////
-    //           Importing scenarios from JSON to dropdown list             //
+    //                  Importing JSON data to dropdown list                //
     //////////////////////////////////////////////////////////////////////////
 
-    async function generatePlatformList() {
-        await axios.get("file:///C:/Users/WillSharrock/OneDrive%20-%20Catalyze%20Consulting/Desktop/STORM_fresh-main/data/JSON_Data/Scenarios list.json")
-        .then((response) => {
-console.log(response.data);
-        })
-            .catch((error) => console.log(error));
-    }
+    for (let i=0; i<scenarioListData.default.length; i++) {
+        scenario.push(scenarioListData.default[i].Scenario);
+        }
 
-        // function handleClickScenario(event) {
-        //     setScenarioSelected(event.target.innerHTML);
-        // }
-    
-        // useEffect(() => {
-        //     document.getElementById("scenario-list-placeholder").value = scenarioSelected;
-        //     }, [scenarioSelected]);
+    for (let i=0; i<scenarioEntitiesData.default.length; i++) {
+        platform.push(scenarioEntitiesData.default[i].Platform);
+        }
 
-        // async function generateScenarioName() {
-        //     await axios.get("./data/JSON_Data/Scenarios list.json")
-        //     .then((response) => {
-        //         const data = response.data;
-        //         console.log(data);
-        //         const scenarioList=[];
-        //         for(let i=0; i<response.data.length; i++) {
-        //             scenarioList.push(data[i]["Scenario"]);
-        //         }
-        //         setScenario(scenarioList);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
-        // }
-    
-        // function handleClickScenario(event: React.ChangeEvent<HTMLInputElement>) {
-        //     setScenarioSelected(event.target.innerHTML);
-        // }
-    
-        // useEffect(() => {
-        //     (document.getElementById("scenario-list-placeholder") as HTMLInputElement).value = scenarioSelected;
-        //     }, [scenarioSelected]);
-    
-    //////////////////////////////////////////////////////////////////////////
-    //                    Generating the 'Platform table'                   //
-    //////////////////////////////////////////////////////////////////////////
-    
-        // async function populatePlatformTable() {
-        //     await axios.get("./data/JSON_Data/Platform list.json")
-        //     .then((response) => {
-        //         let dataTable: string[] = [];
-        //         const data = response.data;
-        //         const headers: string[] = Object.keys(data[0]);
-        //         for (let i=0; i<response.data.length; i++) {
-        //             if (data[i]["Platform"] === platformSelected) {
-        //                 const tableContent: string[] = Object.values(data[i]);
-        //                 for (let i=1; i<tableContent.length; i++) {
-        //                     dataTable.push([headers[i], tableContent[i]]);
-        //                 }
-        //             }
-        //         }
-        //         setPlatformTable([...dataTable]);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
-        // }
-    
-    //////////////////////////////////////////////////////////////////////////
-    //         Importing platform details from JSON to dropdown list        //
-    //////////////////////////////////////////////////////////////////////////
-    
-        // async function generatePlatformList() {
-        //     await axios.get("./data/JSON_Data/Scenario entities.json")
-        //     .then((response) => {
-        //         const data = response.data;
-        //         let platformList=[];
-        //         for(let i=0; i<response.data.length; i++) {
-        //             platformList.push(data[i]["Platform"]);
-        //         }
-        //         setPlatform(platformList.filter((v,i,self) => i==self.indexOf(v)));
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     })
-        // }
-    
-        // function handleClickPlatform(event: React.ChangeEvent<HTMLInputElement>) {
-        //     setPlatformSelected(event.target.innerHTML);
-        // }
-    
-        // useEffect(() => {
-        //     (document.getElementById("platform-list-placeholder") as HTMLInputElement).value = platformSelected;
-        //     populatePlatformTable();
-        //     }, [platformSelected]);
-    
-        // useEffect(() => {
-        // }, [platformTable]);
-    
-    //////////////////////////////////////////////////////////////////////////
-    //                   Generating the 'ORBAT' table                       //
-    //////////////////////////////////////////////////////////////////////////
-    
-        // async function populateOrbatTable() {
-        //     await axios.get("./data/JSON_Data/Scenario entities.json")
-        //     .then((response) => {
-        //         let dataTable: string[] = [];
-        //         const data = response.data;
-        //         for (let i=0; i<response.data.length; i++) {
-        //             if (data[i]["Scenario"] === scenarioSelected) {
-        //                 const tablePlatform = data[i]["Platform"];
-        //                 const tableColour = data[i]["Colour"];
-        //                 dataTable.push([tablePlatform, tableColour]);
-        //             }
-        //         }
-        //         setOrbatTable([...dataTable]);
-        //     })
-        //     .catch((error) => {
-        //         console.log(error);
-        //     });
-        // }
-    
     //////////////////////////////////////////////////////////////////////////
     //                 Initialising the overview interface                  //
     //////////////////////////////////////////////////////////////////////////
-    
-        return(
-            <div>
-                <h3>Setup</h3>
-                <hr />
-                <h4>Scenario list</h4>
-                <div className="dropdown d-grid border rounded-2">
-                    <button onClick={generatePlatformList} className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <input type="text" id="scenario-list-placeholder" value="" placeholder="Select..." className="col-11 border-0"/>
-                    </button>
-                    <div className="dropdown-menu col-12" id="scenario" aria-labelledby="dropdownMenuButton">
-                        {scenario.map((item, index) => {
-                            return(
-                                <button className="dropdown-item" onClick={() => console.log("handleClickScenario")} key={index} >{item}</button>
-                            )
-                        })}
-                    </div>
-                </div>
-                <button onClick={() => console.log("populateOrbatTable")}>
-                    Load scenario
+
+    return(
+        <div>
+            <h3>Setup</h3>
+            <hr />
+            <h4>Scenario list</h4>
+            <div className="dropdown d-grid border rounded-2">
+                <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <input type="text" id="scenario-list-placeholder" placeholder="Select..." className="col-11 border-0"/>
                 </button>
-                <hr />
-                <h4>ORBAT</h4>
-                <table className="table table-bordered">
-                <thead>
-                    <tr className="table-secondary">
-                        <th scope="col">Platform</th>
-                        <th scope="col">Colour</th>
-                    </tr>
-                </thead>
-                <tbody id="orbat-table-body">
-                    {orbatTable.map((value, index) => {
-                        return (
-                            <tr key={index}>
-                                <td>{value[0]}</td>
-                                <td>{value[1]}</td>
-                            </tr>
+                <div className="dropdown-menu col-12" id="scenario" aria-labelledby="dropdownMenuButton">
+                    {scenario.map((item, index) => {
+                        return(
+                            <button className="dropdown-item" onClick={(event: Event) => {
+                                const { target } = event 
+                                if (target) (document.getElementById("scenario-list-placeholder") as HTMLInputElement).value = (target as HTMLButtonElement).innerHTML;
+                            }} key={index} >{item}</button>
                         )
                     })}
-                </tbody>
-                </table>
-                <hr />
-                <h4>Platform details</h4>
-                <div className="dropdown d-grid border rounded-2">
-                <button onClick={() => console.log("generatePlatformList")} className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <input type="text" id="platform-list-placeholder" placeholder="Select..." className="col-11 border-0"/>
-                    </button>
-                    <div className="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
-                        {platform.map((item, index) => {
-                                return(
-                                    <button className="dropdown-item" onClick={() => console.log("handleClickPlatform")} key={index} >{item}</button>
-                                )
-                            })}
-                    </div>
                 </div>
+            </div>
+            <button onClick={() => {
+                orbatTable = [];
+                for (let i=0; i<scenarioEntitiesData.default.length; i++) {
+                    if (scenarioEntitiesData.default[i].Scenario === (document.getElementById("scenario-list-placeholder") as HTMLInputElement).value) {
+                        orbatTable.push([scenarioEntitiesData.default[i].Platform, scenarioEntitiesData.default[i].Colour]);
+                    }
+                }
+                console.log(orbatTable);
+                if (document.getElementById("orbat-table-body") !== null) {
+                    document.getElementById("orbat-table-body")!.innerHTML = orbatTable.map((value, index) => {return ('<tr key=' + index + '><td>' + value[0] + '</td><td>' + value[1] + '</td></tr>')}).join("");
+                }
+            }}>
+                Load scenario
+            </button>
+            <hr />
+            <h4>ORBAT</h4>
+            <div id="orbat-table">
                 <table className="table table-bordered">
-                <tbody id="orbat-table-body">
-                    {platformTable.map((value, index) => {
-                        return (
-                            <tr key={index}>
-                                <td>{value[0]}</td>
-                                <td>{value[1]}</td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
+                    <thead>
+                        <tr className="table-secondary">
+                            <th scope="col">Platform</th>
+                            <th scope="col">Colour</th>
+                        </tr>
+                    </thead>
+                    <tbody id="orbat-table-body">
+                    </tbody>
                 </table>
             </div>
-        );
+            <hr />
+            <h4>Platform details</h4>
+            <div className="dropdown d-grid border rounded-2">
+            <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <input type="text" id="platform-list-placeholder" placeholder="Select..." className="col-11 border-0"/>
+                </button>
+                <div className="dropdown-menu col-12" aria-labelledby="dropdownMenuButton">
+                    {[...new Set(platform)].map((item, index) => {
+                            return(
+                                <button className="dropdown-item" onClick={(event: Event) => {
+                                    const { target } = event 
+                                    if (target) (document.getElementById("platform-list-placeholder") as HTMLInputElement).value = (target as HTMLButtonElement).innerHTML;
+                                    platformTable = [];
+                                    for (let i=0; i<platformListData.default.length; i++) {
+                                        if (platformListData.default[i].Platform === (target as HTMLButtonElement).innerHTML) {
+                                            const tableContent = Object.values(platformListData.default[i]);
+                                            for (let i=1; i<tableContent.length; i++) {
+                                                platformTable.push([Object.keys(platformListData.default[0])[i], tableContent[i]]);
+                                            }
+                                        }
+                                    }
+                                    if (document.getElementById("platform-table-body") !== null) {
+                                        document.getElementById("platform-table-body")!.innerHTML = platformTable.map((value, index) => {return ('<tr key=' + index + '><td>' + value[0] + '</td><td>' + value[1] + '</td></tr>')}).join("");
+                                    }
+                            }} key={index} >{item}</button>
+                        )
+                    })}
+                </div>
+            </div>
+            <table className="table table-bordered">
+            <tbody id="platform-table-body">
+            </tbody>
+            </table>
+        </div>
+    );
     }
-    
-    export default OverviewSidebar;
+
+export default OverviewSidebar;
