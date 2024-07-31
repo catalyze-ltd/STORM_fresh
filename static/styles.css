@@ -1,0 +1,197 @@
+html {
+    font-family: Helvetica, sans-serif
+}
+
+#map {
+    z-index: 1;
+}
+
+#fpsSlider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 12px;
+    width: 200px;
+    background: white;
+    border: 1px solid #a5a5a5;
+    position: relative;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .0s;
+    transition: opacity .2s;
+    z-index: 9;
+}
+
+#fpsSlider:hover {
+    opacity: 1;
+}
+
+#fpsSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 22px;
+    background-color: #ddd;
+    border: 1px solid #a5a5a5;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+#fpsSlider::-moz-range-thumb {
+    width: 8px;
+    height: 22px;
+    background-color: #ddd;
+    border: 1px solid #a5a5a5;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+#timestep-box {
+    position: absolute;
+    height: auto;
+    width: auto;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    margin-left: 10px;
+    margin-bottom: 10px;
+    bottom: 0;
+    left:0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 29px 29px 29px 149px 212px 122px;
+    grid-template-rows: 30px;
+    grid-template-areas: "item1 item2 item3 item4 item5 item6";
+    column-gap: 1px;
+    background-color: rgba(0, 0, 0, 0.2);
+    justify-content: start;
+    text-align: center;
+    line-height: 26px;
+    z-index: 10;
+}
+
+#item1 {
+    grid-area: item1;
+    background-color: white;
+}
+
+#item2 {
+    grid-area: item2;
+    background-color: white;
+}
+
+#item3 {
+    grid-area: item3;
+    background-color: white;
+}
+
+#item4 {
+    grid-area: item4;
+    background-color: white;
+    font-size: 10px;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+#item5 {
+    grid-area: item5;
+    background-color: white;
+    width: 100%;
+}
+
+#item6 {
+    grid-area: item6;
+    background-color: white;
+    font-size: 10px;
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+
+#fpsSlider1 {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 12px;
+    width: 51px;
+    background: white;
+    border: 1px solid #a5a5a5;
+    position: relative;
+    margin-left: 6px;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .0s;
+    transition: opacity .2s;
+    grid-area: slider2;
+}
+
+#fpsSlider1:hover {
+    opacity: 1;
+}
+
+#fpsSlider1::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 8px;
+    height: 22px;
+    background-color: #ddd;
+    border: 1px solid #a5a5a5;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+  
+#fpsSlider1::-moz-range-thumb {
+    width: 8px;
+    height: 22px;
+    background-color: #ddd;
+    border: 1px solid #a5a5a5;
+    border-radius: 2px;
+    cursor: pointer;
+  }
+
+#fps-slider {
+    display: grid;
+    grid-template-columns: 24px 37px 60px;
+    grid-template-rows: 30px;
+    grid-template-areas: "clock text-fps slider2";
+    justify-content: start;
+    text-align: center;
+    line-height: 26px;
+}
+
+#clockicon {
+    grid-area: clock;
+    background-color: white;
+    margin-left: 7px;
+    margin-top: 10px;
+}
+
+#fpstext {
+    grid-area: text-fps;
+    background-color: white;
+}
+
+#sliderContainer {
+    width: 100%;
+}
+
+#timestepbutton1 {
+    width:100%;
+    height:100%;
+    background-color: white;
+    border-width: 0px;
+}
+
+#timestepbutton2 {
+    width:100%;
+    height:100%;
+    background-color: white;
+    border-width: 0px;
+}
+
+#timestepbutton3 {
+    width:100%;
+    height:100%;
+    background-color: white;
+    border-width: 0px;
+}
